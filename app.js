@@ -1,18 +1,27 @@
 const Post = require('./models/post')
-const app = require('express')()
+const express = require('express')
+const app = express()
 const bodyParser = require('body-parser')
+const path = require('path')
 
 app.set('view engine', 'ejs')
 
 app.use(bodyParser.urlencoded({ extended: true }))
-const data = ['Hello', 'world', 'test']
+app.use(express.static(path.join(__dirname,)))
+app.use(
+  'public/javascripts',
+  express.static(path.join(__dirname, 'node_modules', 'jquery', 'dist'))
+)
 
 app.get('/', (req, res) => {
-  res.render('index', { title: 'oleh title', data })
+  Post.find({}, (error, posts) => {
+    console.log(posts)
+    res.render('index', { title: 'oleh title', posts })
+  })
 })
 
 app.get('/create', (req, res) => {
-  res.render('create', { title: 'oleh title', data })
+  res.render('create', { title: 'oleh title' })
 })
 
 app.post('/create', (req, res) => {
