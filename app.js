@@ -3,11 +3,13 @@ const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const path = require('path')
+const staticAsset = require('static-asset')
 
 app.set('view engine', 'ejs')
 
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(express.static(path.join(__dirname,)))
+app.use(staticAsset(path.join(__dirname)))
+app.use(express.static(path.join(__dirname)))
 app.use(
   'public/javascripts',
   express.static(path.join(__dirname, 'node_modules', 'jquery', 'dist'))

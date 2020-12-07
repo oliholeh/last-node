@@ -3,8 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="public/stylesheets/main.css" />
-    <title><%= title %></title>
+    <link
+      rel="stylesheet"
+      href="<%= assetFingerprint('public/stylesheets/style.css') %>"
+    />
+    <title>Test gulp</title>
   </head>
-  <body></body>
+  <body>
+    <header class="header">
+      <div class="container">
+        <a href="/" class="logo"></a>
+        <ul class="menu">
+          <li>
+            <a href="/">Hello</a>
+          </li>
+        </ul>
+      </div>
+    </header>
+  </body>
 </html>
