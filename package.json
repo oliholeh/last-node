@@ -1,32 +1,34 @@
 {
   "name": "last-node",
   "version": "1.0.0",
-  "description": "node express blog site",
+  "description": "node gulp express mongoose",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env PORT=3001 node index",
-    "dev": "cross-env PORT=3001 nodemon index"
+    "dev": "gulp"
   },
   "repository": {
     "type": "git",
-    "url": "git init"
+    "url": "git+https://github.com/oliholeh/last-node.git"
   },
   "keywords": [
     "node",
     "express",
+    "gulp",
     "mongoose"
   ],
   "author": "olih oleh <test@mail.ua>",
   "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "ejs": "^3.1.5",
-    "express": "^4.17.1",
-    "jquery": "^3.5.1",
-    "mongoose": "^5.11.4"
+  "bugs": {
+    "url": "https://github.com/oliholeh/last-node/issues"
   },
+  "homepage": "https://github.com/oliholeh/last-node#readme",
   "devDependencies": {
-    "cross-env": "^7.0.3",
-    "nodemon": "^2.0.6"
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-sass": "^4.1.0"
+  },
+  "dependencies": {
+    "browser-sync": "^2.26.13"
   }
 }
