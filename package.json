@@ -4,14 +4,10 @@
   "description": "node gulp express mongoose",
   "main": "index.js",
   "scripts": {
-<<<<<<< HEAD
     "start": "cross-env PORT=3001 node index",
     "gulp": "gulp",
     "nodemon": "nodemon index",
     "dev": "cross-env PORT=3001 npm-run-all --parallel nodemon gulp"
-=======
-    "dev": "gulp"
->>>>>>> master
   },
   "repository": {
     "type": "git",
@@ -25,7 +21,6 @@
   ],
   "author": "olih oleh <test@mail.ua>",
   "license": "ISC",
-<<<<<<< HEAD
   "dependencies": {
     "body-parser": "^1.19.0",
     "ejs": "^3.1.5",
@@ -33,28 +28,16 @@
     "jquery": "^3.5.1",
     "mongoose": "^5.11.4",
     "static-asset": "^0.6.0"
-=======
-  "bugs": {
-    "url": "https://github.com/oliholeh/last-node/issues"
->>>>>>> master
   },
   "homepage": "https://github.com/oliholeh/last-node#readme",
   "devDependencies": {
-<<<<<<< HEAD
     "cross-env": "^7.0.3",
-=======
-    "browser-sync": "^2.26.13",
->>>>>>> master
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-cssnano": "^2.1.3",
     "gulp-plumber": "^1.2.1",
-<<<<<<< HEAD
     "gulp-sass": "^4.1.0",
     "nodemon": "^2.0.6",
     "npm-run-all": "^4.1.5"
-=======
-    "gulp-sass": "^4.1.0"
->>>>>>> master
   }
 }
