@@ -2,7 +2,8 @@ const gulp = require('gulp')
 const sass = require('gulp-sass')
 const autoprefixer = require('gulp-autoprefixer')
 const cssnano = require('gulp-cssnano')
-const browserSync = require('browser-sync')
+// const browserSync = require('browser-sync')
+
 const plumber = require('gulp-plumber')
 
 gulp.task('scss', (done) => {
@@ -17,32 +18,15 @@ gulp.task('scss', (done) => {
         })
       )
       .pipe(cssnano())
-      .pipe(gulp.dest('dist/css'))
-      .pipe(browserSync.reload({ stream: true }))
+      .pipe(gulp.dest('public/stylesheets'))
   )
 
   done()
 })
 
-gulp.task('browser-sync', (done) => {
-  browserSync.init({
-    server: {
-      baseDir: './dist/',
-    },
-  })
-
+gulp.task('watch', (done) => {
   gulp.watch('dev/scss/**/*.scss', gulp.series('scss'))
-  gulp.watch('dist/*.html').on('change', () => {
-    browserSync.reload()
-    done()
-  })
-
-  gulp.watch('dist/**/*.css').on('change', () => {
-    browserSync.reload()
-    done()
-  })
-
   done()
 })
 
-gulp.task('default', gulp.parallel('scss', 'browser-sync'))
+gulp.task('default', gulp.parallel('scss', 'watch'))
