@@ -2,7 +2,11 @@ const gulp = require('gulp')
 const sass = require('gulp-sass')
 const autoprefixer = require('gulp-autoprefixer')
 const cssnano = require('gulp-cssnano')
+<<<<<<< HEAD
 // const browserSync = require('browser-sync')
+=======
+const browserSync = require('browser-sync')
+>>>>>>> master
 const plumber = require('gulp-plumber')
 
 gulp.task('scss', (done) => {
@@ -17,15 +21,45 @@ gulp.task('scss', (done) => {
         })
       )
       .pipe(cssnano())
+<<<<<<< HEAD
       .pipe(gulp.dest('public/stylesheets'))
+=======
+      .pipe(gulp.dest('dist/css'))
+      .pipe(browserSync.reload({ stream: true }))
+>>>>>>> master
   )
 
   done()
 })
 
+<<<<<<< HEAD
 gulp.task('watch', (done) => {
   gulp.watch('dev/scss/**/*.scss', gulp.series('scss'))
   done()
 })
 
 gulp.task('default', gulp.parallel('scss', 'watch'))
+=======
+gulp.task('browser-sync', (done) => {
+  browserSync.init({
+    server: {
+      baseDir: './dist/',
+    },
+  })
+
+  gulp.watch('dev/scss/**/*.scss', gulp.series('scss'))
+  gulp.watch('dist/*.html').on('change', () => {
+    browserSync.reload()
+    done()
+  })
+
+  gulp.watch('dist/**/*.css').on('change', () => {
+    browserSync.reload()
+    done()
+  })
+
+  done()
+})
+
+gulp.task('default', gulp.parallel('scss', 'browser-sync'))
+>>>>>>> master

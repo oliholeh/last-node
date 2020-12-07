@@ -18,11 +18,19 @@
     padding: 0 $freeSpace 0 $freeSpace;
 
     .logo {
+<<<<<<< HEAD
       background-image: url('../../public/images/logo.png');
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
       // background-color: lightcoral;
+=======
+      background-image: url('/img/logo.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+        // background-color: lightcoral;
+>>>>>>> master
       width: 120px;
       height: $headerHeight - 3;
       margin-top: 3px;
