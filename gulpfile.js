@@ -37,7 +37,7 @@ gulp.task('js', (done) => {
 
 gulp.task('watch', (done) => {
   gulp.watch('dev/scss/**/*.scss', gulp.series('scss'))
-  gulp.watch('dev/js/**/*.scss', gulp.series('js'))
+  gulp.watch('dev/js/**/*.js', gulp.series('js'))
   done()
 })
 

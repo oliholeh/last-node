@@ -1,1 +1,1 @@
-$(function(){var i=!0;$(".switch-button").on("click",function(o){o.preventDefault(),i?(i=!1,$(".register").show("slow"),$(".login").hide()):(i=!0,$(".login").show("slow"),$(".register").hide())})});
+$(function(){var o=!0;$(".switch-button").on("click",function(i){i.preventDefault(),o?(o=!1,$(".register").show("slow"),$(".login").hide()):(o=!0,$(".login").show("slow"),$(".register").hide())})});

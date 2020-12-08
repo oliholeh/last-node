@@ -4,10 +4,10 @@
   "description": "node gulp express mongoose",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env PORT=3001 node index",
+    "start": "node index",
     "gulp": "gulp",
     "nodemon": "nodemon index",
-    "dev": "cross-env PORT=3001 npm-run-all --parallel nodemon gulp"
+    "dev": "npm-run-all --parallel nodemon gulp"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "gulp-concat": "^2.6.1",
@@ -33,7 +34,6 @@
   },
   "homepage": "https://github.com/oliholeh/last-node#readme",
   "devDependencies": {
-    "cross-env": "^7.0.3",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-cssnano": "^2.1.3",
