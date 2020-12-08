@@ -1,14 +1,16 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const postSchema = new Schema(
+const userSchema = new Schema(
   {
-    title: {
+    login: {
       type: String,
       required: true,
+      unique: true,
     },
-    body: {
+    password: {
       type: String,
+      required: true,
     },
   },
   {
@@ -16,4 +18,4 @@ const postSchema = new Schema(
   }
 )
 
-module.exports = mongoose.model('Post', postSchema)
+module.exports = mongoose.model('User', userSchema)

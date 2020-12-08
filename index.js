@@ -6,6 +6,7 @@ const path = require('path')
 const staticAsset = require('static-asset')
 const config = require('./config')
 const mongoose = require('mongoose')
+const routes = require('./routes')
 
 // database
 mongoose.Promise = global.Promise
@@ -29,6 +30,7 @@ mongoose.connect(config.MONGO_URL, {
 app.set('view engine', 'ejs')
 
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 app.use(staticAsset(path.join(__dirname)))
 app.use(express.static(path.join(__dirname)))
 app.use(
@@ -56,6 +58,8 @@ app.post('/create', (req, res) => {
   }).then((post) => console.log(post))
   res.redirect('/')
 })
+
+app.use('/api/auth', routes.auth)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
