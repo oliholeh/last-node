@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(staticAsset(path.join(__dirname)))
 app.use(express.static(path.join(__dirname)))
 app.use(
-  'public/javascripts',
+  '/public/javascripts',
   express.static(path.join(__dirname, 'node_modules', 'jquery', 'dist'))
 )
 
