@@ -7,6 +7,9 @@ const staticAsset = require('static-asset')
 const config = require('./config')
 const mongoose = require('mongoose')
 const routes = require('./routes')
+const session = require('express-session')
+
+const MongoStore = require('connect-mongo')(session)
 
 // database
 mongoose.Promise = global.Promise
@@ -27,6 +30,18 @@ mongoose.connect(config.MONGO_URL, {
 })
 
 // sets && uses
+// sessions
+app.use(
+  session({
+    secret: config.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: false,
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+    }),
+  })
+)
+
 app.set('view engine', 'ejs')
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -42,6 +57,17 @@ app.use(
 app.get('/', (req, res) => {
   Post.find({}, (error, posts) => {
     console.log(posts)
+    const id = req.session.userId
+    const login = req.session.userLogin
+
+    res.render('index', {
+      user: {
+        id,
+        login,
+      },
+      title: 'oleh title',
+      posts,
+    })
     res.render('index', { title: 'oleh title', posts })
   })
 })

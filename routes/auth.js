@@ -57,6 +57,8 @@ router.post('/register', (req, res) => {
             password: hash,
           })
             .then((user) => {
+              req.session.userId = user.id;
+              req.session.userLogin = user.login;
               console.log(user)
               res.json({
                 ok: true,
@@ -74,5 +76,64 @@ router.post('/register', (req, res) => {
     })
   }
 })
+
+router.post('/login', (req, res) => {
+  const { login, password } = req.body
+  if (!login || !password) {
+    const fields = []
+    if (!login) {
+      fields.push('login')
+    }
+    if (!password) {
+      fields.push('password')
+    }
+
+    res.json({
+      ok: false,
+      error: 'Все поля авторизации должни бить заполнени!!',
+      fields,
+    })
+  } else {
+    models.User.findOne({ login })
+      .then((user) => {
+        if (user) {
+          bcrypt.compare(password, user.password, function (err, result) {
+            if (result) {
+              req.session.userId = user.id
+              req.session.userLogin = user.login
+              res.json({
+                ok: true,
+              })
+            } else {
+              res.json({
+                ok: false,
+                error: 'Логин и пароль неверны!',
+                fields: ['login', 'password'],
+              })
+            }
+          })
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+        res.json({
+          ok: false,
+          error: 'Ошибка, попробуйте позже!',
+        })
+      })
+  }
+})
+
+router.get('/logout', (req, res) => {
+  if (req.session) {
+    // delete session object
+    req.session.destroy(() => {
+      res.redirect('/');
+    });
+  } else {
+    res.redirect('/');
+  }
+});
+
 
 module.exports = router
