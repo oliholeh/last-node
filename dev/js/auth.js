@@ -4,6 +4,12 @@ $(function () {
   $('.switch-button').on('click', function (e) {
     e.preventDefault()
 
+    // reset form login
+    $('input').each(function (index) {
+      $(this).val('')
+    })
+    //end reset
+
     if (flag) {
       flag = false
       $('.register').show('slow')
@@ -42,8 +48,14 @@ $(function () {
             $('input[name=' + item + ']').addClass('error')
           })
         }
+        setTimeout(function () {
+          $('p.error').remove()
+        }, 2000)
       } else {
         $('.register h2').after('<p class="success">Отлично!</p>')
+        setTimeout(function () {
+          $('p.success').remove()
+        }, 2000)
       }
     })
   })
